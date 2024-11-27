@@ -1,21 +1,27 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Send } from 'lucide-react'
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
   })
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Handle form submission here
     console.log(formData)
@@ -93,4 +99,3 @@ const Contact = () => {
 }
 
 export default Contact
-
