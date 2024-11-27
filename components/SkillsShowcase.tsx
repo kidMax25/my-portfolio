@@ -1,9 +1,15 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Brain, BarChart2, PieChart, TrendingUp, Database, FileText } from 'lucide-react'
+import { Brain, BarChart2, PieChart, TrendingUp, Database, FileText, LucideIcon } from 'lucide-react'
 
-const skills = [
+interface Skill {
+  name: string;
+  icon: LucideIcon;
+  color: string;
+}
+
+const skills: Skill[] = [
   { name: 'Machine Learning', icon: Brain, color: 'bg-purple-500' },
   { name: 'Data Visualization', icon: BarChart2, color: 'bg-blue-500' },
   { name: 'Infographics', icon: PieChart, color: 'bg-green-500' },
@@ -12,7 +18,13 @@ const skills = [
   { name: 'Reporting', icon: FileText, color: 'bg-indigo-500' },
 ]
 
-const SkillCard = ({ name, icon: Icon, color }) => (
+interface SkillCardProps {
+  name: string;
+  icon: LucideIcon;
+  color: string;
+}
+
+const SkillCard: React.FC<SkillCardProps> = ({ name, icon: Icon, color }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     className={`${color} p-6 rounded-lg shadow-lg`}
@@ -22,7 +34,7 @@ const SkillCard = ({ name, icon: Icon, color }) => (
   </motion.div>
 )
 
-const SkillsShowcase = () => {
+const SkillsShowcase: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
@@ -52,4 +64,3 @@ const SkillsShowcase = () => {
 }
 
 export default SkillsShowcase
-
