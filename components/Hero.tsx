@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, FileText } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -19,15 +19,27 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-gray-400 mb-8">
             Data Scientist & Analyst specializing in ML, Visualization, and Business Analytics
           </p>
-          <motion.a
-            href="#contact"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get in Touch
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </motion.a>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <motion.a
+              href="#contact"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get in Touch
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </motion.a>
+            <motion.a
+              href="/resume.pdf" // Add your resume file path here
+              target="_blank"
+              className="inline-flex items-center px-6 py-3 bg-gray-700 text-white rounded-full text-lg font-semibold hover:bg-gray-600 transition duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Resume
+              <FileText className="ml-2 h-5 w-5" />
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -35,4 +47,3 @@ const Hero = () => {
 }
 
 export default Hero
-
