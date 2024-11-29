@@ -10,12 +10,12 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'Machine Learning', icon: Brain, color: 'bg-purple-500' },
-  { name: 'Data Visualization', icon: BarChart2, color: 'bg-blue-500' },
-  { name: 'Infographics', icon: PieChart, color: 'bg-green-500' },
-  { name: 'Business Analytics', icon: TrendingUp, color: 'bg-yellow-500' },
-  { name: 'Data Cleaning', icon: Database, color: 'bg-red-500' },
-  { name: 'Reporting', icon: FileText, color: 'bg-indigo-500' },
+  { name: 'Machine Learning', icon: Brain, color: 'bg-zinc-800' },
+  { name: 'Data Visualization', icon: BarChart2, color: 'bg-zinc-800' },
+  { name: 'Infographics', icon: PieChart, color: 'bg-zinc-800' },
+  { name: 'Business Analytics', icon: TrendingUp, color: 'bg-zinc-800' },
+  { name: 'Data Cleaning', icon: Database, color: 'bg-zinc-800' },
+  { name: 'Reporting', icon: FileText, color: 'bg-zinc-800' },
 ]
 
 interface SkillCardProps {
@@ -27,22 +27,22 @@ interface SkillCardProps {
 const SkillCard: React.FC<SkillCardProps> = ({ name, icon: Icon, color }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className={`${color} p-6 rounded-lg shadow-lg`}
+    className={`${color} p-6 rounded-lg shadow-lg border border-zinc-700 hover:border-zinc-600`}
   >
-    <Icon className="h-12 w-12 mb-4 text-white" />
-    <h3 className="text-xl font-semibold text-white">{name}</h3>
+    <Icon className="h-12 w-12 mb-4 text-blue-500" />
+    <h3 className="text-xl font-semibold text-gray-100">{name}</h3>
   </motion.div>
 )
 
 const SkillsShowcase: React.FC = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-800">
+    <section id="skills" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-100"
         >
           My Expertise
         </motion.h2>
