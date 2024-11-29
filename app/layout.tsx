@@ -17,7 +17,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Maxwell Simiyu| Data Science Portfolio",
+  title: "Maxwell Simiyu | Data Science Portfolio",
   description: "Data Science Portfolio showcasing projects, analysis, and visualizations",
 };
 

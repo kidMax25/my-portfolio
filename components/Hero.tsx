@@ -30,7 +30,7 @@ const Hero = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </motion.a>
             <motion.a
-              href="/resume.pdf" // Add your resume file path here
+              href="/resume" // Add your resume file path here
               target="_blank"
               className="inline-flex items-center px-6 py-3 bg-gray-700 text-white rounded-full text-lg font-semibold hover:bg-gray-600 transition duration-300"
               whileHover={{ scale: 1.05 }}
