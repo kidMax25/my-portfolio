@@ -32,7 +32,7 @@ export default function CV() {
     transition: { duration: 0.6 },
   };
 
-  const sectionFade = (delay) => ({
+  const sectionFade = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6, delay },
