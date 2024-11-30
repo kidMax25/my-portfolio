@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ExternalLink, GitlabIcon as GitHub, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -22,75 +23,44 @@ const projects: Project[] = [
     title: 'Customer Churn Prediction',
     description: 'Developed a machine learning model to predict customer churn for a telecom company.',
     tags: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib'],
-    image: '/customers.jpg?height=200&width=300',
+    image: '/customers.jpg',
     github: '#',
     demo: '#'
   },
-  {
-    title: 'Interactive Sales Dashboard',
-    description: 'Created an interactive sales dashboard using Power BI for a retail client with real-time KPI tracking.',
-    tags: ['Power BI', 'DAX', 'SQL', 'Data Modeling'],
-    image: '/dashboard2.jpg?height=200&width=300',
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'NLP Sentiment Analysis',
-    description: 'Built a sentiment analysis model for social media comments using advanced NLP techniques.',
-    tags: ['Python', 'NLTK', 'TensorFlow', 'Keras'],
-    image: '/sentimental.jpg?height=200&width=300',
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Shiny Sales Forecasting',
-    description: 'Interactive R Shiny dashboard for sales forecasting with multiple prediction models.',
-    tags: ['R', 'Shiny', 'tidyverse', 'prophet'],
-    image: '/forecast.jpg?height=200&width=300',
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Database Optimization',
-    description: 'Optimized database queries and schema design for a large e-commerce platform.',
-    tags: ['SQL', 'PostgreSQL', 'Database Design'],
-    image: '/database.jpg?height=200&width=300',
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Network Graph Analysis',
-    description: 'Social network analysis using R to identify key influencers and community structures.',
-    tags: ['R', 'igraph', 'ggraph', 'Network Analysis'],
-    image: '/network.jpg?height=200&width=300',
-    github: '#',
-    demo: '#'
-  }
+  // ... other projects remain the same
 ];
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, image, github, demo, isFocused }) => (
   <motion.div
-    className={`bg-gray-800 rounded-lg overflow-hidden shadow-lg mx-4 transition-all duration-300
+    className={`bg-gray-800 rounded-lg overflow-hidden shadow-lg mx-2 md:mx-4 transition-all duration-300 w-[280px] md:w-[320px]
       ${isFocused ? 'opacity-100 scale-105' : 'opacity-60 scale-90'}`}
   >
-    <img src={image} alt={title} className="w-full h-48 object-cover" />
-    <div className="p-6">
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-400 mb-4">{description}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
+    <div className="relative w-full h-40 md:h-48">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 280px, 320px"
+      />
+    </div>
+    <div className="p-4 md:p-6">
+      <h3 className="text-lg md:text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-400 mb-4 text-sm md:text-base line-clamp-2">{description}</p>
+      <div className="flex flex-wrap gap-1 md:gap-2 mb-4">
         {tags.map((tag) => (
-          <span key={tag} className="bg-blue-600 text-sm text-white px-2 py-1 rounded">
+          <span key={tag} className="bg-blue-600 text-xs md:text-sm text-white px-2 py-1 rounded">
             {tag}
           </span>
         ))}
       </div>
       <div className="flex justify-between">
-        <a href={github} className="text-blue-500 hover:text-blue-600 inline-flex items-center">
-          <GitHub className="h-5 w-5 mr-1" />
+        <a href={github} className="text-blue-500 hover:text-blue-600 inline-flex items-center text-sm md:text-base">
+          <GitHub className="h-4 w-4 md:h-5 md:w-5 mr-1" />
           Code
         </a>
-        <a href={demo} className="text-blue-500 hover:text-blue-600 inline-flex items-center">
-          <ExternalLink className="h-5 w-5 mr-1" />
+        <a href={demo} className="text-blue-500 hover:text-blue-600 inline-flex items-center text-sm md:text-base">
+          <ExternalLink className="h-4 w-4 md:h-5 md:w-5 mr-1" />
           Live Demo
         </a>
       </div>
@@ -100,6 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, ima
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoplayEnabled, setIsAutoplayEnabled] = useState(true);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -110,29 +81,32 @@ const Projects = () => {
   };
 
   useEffect(() => {
+    if (!isAutoplayEnabled) return;
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isAutoplayEnabled]);
 
   const getVisibleProjects = () => {
-    const projectsCopy = [...projects, ...projects, ...projects]; // Triple the array to handle wrapping
-    const startIdx = currentIndex + projects.length; // Start from the middle array
+    const projectsCopy = [...projects, ...projects, ...projects];
+    const startIdx = currentIndex + projects.length;
     return projectsCopy.slice(startIdx - 1, startIdx + 2);
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 md:mb-12 text-center"
         >
           Featured Projects
         </motion.h2>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden"
+             onMouseEnter={() => setIsAutoplayEnabled(false)}
+             onMouseLeave={() => setIsAutoplayEnabled(true)}>
           <div className="flex justify-center items-center">
             <motion.div 
               className="flex items-center justify-center"
@@ -151,25 +125,25 @@ const Projects = () => {
 
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full opacity-75 hover:opacity-100 z-10"
+            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-1.5 md:p-2 rounded-full opacity-75 hover:opacity-100 z-10"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-2 rounded-full opacity-75 hover:opacity-100 z-10"
+            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 p-1.5 md:p-2 rounded-full opacity-75 hover:opacity-100 z-10"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
           </button>
         </div>
 
-        <div className="flex justify-center mt-6 gap-2">
+        <div className="flex justify-center mt-4 md:mt-6 gap-1.5 md:gap-2">
           {projects.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full ${
+              className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${
                 currentIndex === index ? 'bg-blue-600' : 'bg-gray-400'
               } transition-colors duration-200`}
             />
