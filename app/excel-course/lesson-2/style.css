@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f5f5;
+  margin-left: 180px;
+  margin-right: 180px;
+}
+
+.excel-green {
+  background-color: #217346;
+}
+
+.excel-light-green {
+  background-color: #e7f4e4;
+}
+
+.excel-dark-green {
+  background-color: #1a5c38;
+}
+
+.slide {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+.bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bullet.active {
+  background-color: #217346;
+}
+
+.formula-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #217346;
+  padding: 12px;
+  margin: 10px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.function-highlight {
+  color: #217346;
+  font-weight: bold;
+}
+
+.note-box {
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.example-box {
+  background-color: #e3f2fd;
+  border-left: 4px solid #2196f3;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.comparison-table th, .comparison-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.comparison-table th {
+  background-color: #e7f4e4;
+}
+
+.category-chip {
+  display: inline-block;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  margin: 2px;
+}

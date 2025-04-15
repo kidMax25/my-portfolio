@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Shortcuts Reference</title>
+    <style>
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            line-height: 1.6;
+            color: #212121;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #217346; /* Excel green */
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e6e6e6;
+            font-weight: 600;
+        }
+        h2 {
+            color: #217346; /* Excel green */
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e6e6e6;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #d0d0d0;
+            text-align: left;
+        }
+        th {
+            background-color: #217346; /* Excel green */
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .shortcut {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .note {
+            background-color: #e8f4eb; /* Light green background */
+            padding: 15px;
+            border-left: 4px solid #217346; /* Excel green */
+            margin-bottom: 20px;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            th {
+                background-color: #e6e6e6 !important;
+                color: #212121 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Excel Shortcuts Reference</h1>
+
+        <h2>Editing Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cut</td>
+                    <td><span class="shortcut">Ctrl + X</span></td>
+                    <td><span class="shortcut">⌘ + X</span></td>
+                </tr>
+                <tr>
+                    <td>Copy</td>
+                    <td><span class="shortcut">Ctrl + C</span></td>
+                    <td><span class="shortcut">⌘ + C</span></td>
+                </tr>
+                <tr>
+                    <td>Paste</td>
+                    <td><span class="shortcut">Ctrl + V</span></td>
+                    <td><span class="shortcut">⌘ + V</span></td>
+                </tr>
+                <tr>
+                    <td>Undo</td>
+                    <td><span class="shortcut">Ctrl + Z</span></td>
+                    <td><span class="shortcut">⌘ + Z</span></td>
+                </tr>
+                <tr>
+                    <td>Redo</td>
+                    <td><span class="shortcut">Ctrl + Y</span></td>
+                    <td><span class="shortcut">⌘ + Y</span></td>
+                </tr>
+                <tr>
+                    <td>Find</td>
+                    <td><span class="shortcut">Ctrl + F</span></td>
+                    <td><span class="shortcut">⌘ + F</span></td>
+                </tr>
+                <tr>
+                    <td>Replace</td>
+                    <td><span class="shortcut">Ctrl + H</span></td>
+                    <td><span class="shortcut">⌘ + H</span></td>
+                </tr>
+                <tr>
+                    <td>Edit Cell</td>
+                    <td><span class="shortcut">F2</span></td>
+                    <td><span class="shortcut">Control + U</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Formatting Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bold</td>
+                    <td><span class="shortcut">Ctrl + B</span></td>
+                    <td><span class="shortcut">⌘ + B</span></td>
+                </tr>
+                <tr>
+                    <td>Italic</td>
+                    <td><span class="shortcut">Ctrl + I</span></td>
+                    <td><span class="shortcut">⌘ + I</span></td>
+                </tr>
+                <tr>
+                    <td>Underline</td>
+                    <td><span class="shortcut">Ctrl + U</span></td>
+                    <td><span class="shortcut">⌘ + U</span></td>
+                </tr>
+                <tr>
+                    <td>Format Cells Dialog</td>
+                    <td><span class="shortcut">Ctrl + 1</span></td>
+                    <td><span class="shortcut">⌘ + 1</span></td>
+                </tr>
+                <tr>
+                    <td>Number Format</td>
+                    <td><span class="shortcut">Ctrl + Shift + ~</span></td>
+                    <td><span class="shortcut">⌘ + Shift + ~</span></td>
+                </tr>
+                <tr>
+                    <td>Currency Format</td>
+                    <td><span class="shortcut">Ctrl + Shift + $</span></td>
+                    <td><span class="shortcut">⌘ + Shift + $</span></td>
+                </tr>
+                <tr>
+                    <td>Percentage Format</td>
+                    <td><span class="shortcut">Ctrl + Shift + %</span></td>
+                    <td><span class="shortcut">⌘ + Shift + %</span></td>
+                </tr>
+                <tr>
+                    <td>Date Format</td>
+                    <td><span class="shortcut">Ctrl + Shift + #</span></td>
+                    <td><span class="shortcut">⌘ + Shift + #</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Navigation Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Move to edge of data region</td>
+                    <td><span class="shortcut">Ctrl + Arrow Key</span></td>
+                    <td><span class="shortcut">⌘ + Arrow Key</span></td>
+                </tr>
+                <tr>
+                    <td>Move to beginning of worksheet</td>
+                    <td><span class="shortcut">Ctrl + Home</span></td>
+                    <td><span class="shortcut">⌘ + Home</span> or <span class="shortcut">Fn + ⌘ + Left Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Move to end of worksheet</td>
+                    <td><span class="shortcut">Ctrl + End</span></td>
+                    <td><span class="shortcut">⌘ + End</span> or <span class="shortcut">Fn + ⌘ + Right Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Move one screen up</td>
+                    <td><span class="shortcut">Page Up</span></td>
+                    <td><span class="shortcut">Page Up</span> or <span class="shortcut">Fn + Up Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Move one screen down</td>
+                    <td><span class="shortcut">Page Down</span></td>
+                    <td><span class="shortcut">Page Down</span> or <span class="shortcut">Fn + Down Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Next worksheet</td>
+                    <td><span class="shortcut">Ctrl + Page Down</span></td>
+                    <td><span class="shortcut">Option + Right Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Previous worksheet</td>
+                    <td><span class="shortcut">Ctrl + Page Up</span></td>
+                    <td><span class="shortcut">Option + Left Arrow</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>File Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Create new workbook</td>
+                    <td><span class="shortcut">Ctrl + N</span></td>
+                    <td><span class="shortcut">⌘ + N</span></td>
+                </tr>
+                <tr>
+                    <td>Open workbook</td>
+                    <td><span class="shortcut">Ctrl + O</span></td>
+                    <td><span class="shortcut">⌘ + O</span></td>
+                </tr>
+                <tr>
+                    <td>Save workbook</td>
+                    <td><span class="shortcut">Ctrl + S</span></td>
+                    <td><span class="shortcut">⌘ + S</span></td>
+                </tr>
+                <tr>
+                    <td>Save As</td>
+                    <td><span class="shortcut">F12</span> or <span class="shortcut">Alt + F2</span></td>
+                    <td><span class="shortcut">⌘ + Shift + S</span></td>
+                </tr>
+                <tr>
+                    <td>Print</td>
+                    <td><span class="shortcut">Ctrl + P</span></td>
+                    <td><span class="shortcut">⌘ + P</span></td>
+                </tr>
+                <tr>
+                    <td>Close workbook</td>
+                    <td><span class="shortcut">Ctrl + W</span></td>
+                    <td><span class="shortcut">⌘ + W</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Ribbon Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Display Access Key</td>
+                    <td><span class="shortcut">Alt</span></td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Minimize/Restore Ribbon</td>
+                    <td><span class="shortcut">Ctrl + F1</span></td>
+                    <td><span class="shortcut">⌘ + Option + R</span></td>
+                </tr>
+                <tr>
+                    <td>Move to Home tab</td>
+                    <td><span class="shortcut">Alt + H</span></td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Move to Insert tab</td>
+                    <td><span class="shortcut">Alt + N</span></td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Move to Page Layout tab</td>
+                    <td><span class="shortcut">Alt + P</span></td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Move to Formulas tab</td>
+                    <td><span class="shortcut">Alt + M</span></td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Paste Special Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paste Special dialog</td>
+                    <td><span class="shortcut">Ctrl + Alt + V</span></td>
+                    <td><span class="shortcut">⌘ + Control + V</span></td>
+                </tr>
+                <tr>
+                    <td>Paste formulas</td>
+                    <td><span class="shortcut">Alt + E + S + F</span></td>
+                    <td>Use Paste Special dialog</td>
+                </tr>
+                <tr>
+                    <td>Paste values</td>
+                    <td><span class="shortcut">Alt + E + S + V</span></td>
+                    <td>Use Paste Special dialog</td>
+                </tr>
+                <tr>
+                    <td>Paste formats</td>
+                    <td><span class="shortcut">Alt + E + S + T</span></td>
+                    <td>Use Paste Special dialog</td>
+                </tr>
+                <tr>
+                    <td>Paste without borders</td>
+                    <td><span class="shortcut">Alt + E + S + B</span></td>
+                    <td>Use Paste Special dialog</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Clear Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Clear All</td>
+                    <td><span class="shortcut">Alt + H + E + A</span></td>
+                    <td>Use Clear menu</td>
+                </tr>
+                <tr>
+                    <td>Clear Formats</td>
+                    <td><span class="shortcut">Alt + H + E + F</span></td>
+                    <td>Use Clear menu</td>
+                </tr>
+                <tr>
+                    <td>Clear Contents</td>
+                    <td><span class="shortcut">Delete</span></td>
+                    <td><span class="shortcut">Delete</span></td>
+                </tr>
+                <tr>
+                    <td>Clear Comments</td>
+                    <td><span class="shortcut">Alt + H + E + M</span></td>
+                    <td>Use Clear menu</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Selection Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Select all</td>
+                    <td><span class="shortcut">Ctrl + A</span></td>
+                    <td><span class="shortcut">⌘ + A</span></td>
+                </tr>
+                <tr>
+                    <td>Select entire row</td>
+                    <td><span class="shortcut">Shift + Space</span></td>
+                    <td><span class="shortcut">Shift + Space</span></td>
+                </tr>
+                <tr>
+                    <td>Select entire column</td>
+                    <td><span class="shortcut">Ctrl + Space</span></td>
+                    <td><span class="shortcut">Control + Space</span></td>
+                </tr>
+                <tr>
+                    <td>Extend selection by one cell</td>
+                    <td><span class="shortcut">Shift + Arrow Key</span></td>
+                    <td><span class="shortcut">Shift + Arrow Key</span></td>
+                </tr>
+                <tr>
+                    <td>Extend selection to last cell with data</td>
+                    <td><span class="shortcut">Ctrl + Shift + Arrow Key</span></td>
+                    <td><span class="shortcut">⌘ + Shift + Arrow Key</span></td>
+                </tr>
+                <tr>
+                    <td>Select to beginning of row</td>
+                    <td><span class="shortcut">Shift + Home</span></td>
+                    <td><span class="shortcut">Shift + Home</span> or <span class="shortcut">Fn + Shift + Left Arrow</span></td>
+                </tr>
+                <tr>
+                    <td>Select to end of row</td>
+                    <td><span class="shortcut">Shift + End</span></td>
+                    <td><span class="shortcut">Shift + End</span> or <span class="shortcut">Fn + Shift + Right Arrow</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Data Editing Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fill down</td>
+                    <td><span class="shortcut">Ctrl + D</span></td>
+                    <td><span class="shortcut">⌘ + D</span></td>
+                </tr>
+                <tr>
+                    <td>Fill right</td>
+                    <td><span class="shortcut">Ctrl + R</span></td>
+                    <td><span class="shortcut">⌘ + R</span></td>
+                </tr>
+                <tr>
+                    <td>Create names from selection</td>
+                    <td><span class="shortcut">Ctrl + Shift + F3</span></td>
+                    <td><span class="shortcut">⌘ + Shift + F3</span></td>
+                </tr>
+                <tr>
+                    <td>AutoSum</td>
+                    <td><span class="shortcut">Alt + =</span></td>
+                    <td><span class="shortcut">⌘ + Shift + T</span></td>
+                </tr>
+                <tr>
+                    <td>Insert current date</td>
+                    <td><span class="shortcut">Ctrl + ;</span></td>
+                    <td><span class="shortcut">⌘ + ;</span></td>
+                </tr>
+                <tr>
+                    <td>Insert current time</td>
+                    <td><span class="shortcut">Ctrl + Shift + :</span></td>
+                    <td><span class="shortcut">⌘ + Shift + :</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Data Editing (Inside Cell) Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Begin editing cell</td>
+                    <td><span class="shortcut">F2</span></td>
+                    <td><span class="shortcut">Control + U</span></td>
+                </tr>
+                <tr>
+                    <td>Cancel editing</td>
+                    <td><span class="shortcut">Esc</span></td>
+                    <td><span class="shortcut">Esc</span></td>
+                </tr>
+                <tr>
+                    <td>Complete editing and move down</td>
+                    <td><span class="shortcut">Enter</span></td>
+                    <td><span class="shortcut">Return</span></td>
+                </tr>
+                <tr>
+                    <td>Complete editing and move up</td>
+                    <td><span class="shortcut">Shift + Enter</span></td>
+                    <td><span class="shortcut">Shift + Return</span></td>
+                </tr>
+                <tr>
+                    <td>Complete editing and move right</td>
+                    <td><span class="shortcut">Tab</span></td>
+                    <td><span class="shortcut">Tab</span></td>
+                </tr>
+                <tr>
+                    <td>Complete editing and move left</td>
+                    <td><span class="shortcut">Shift + Tab</span></td>
+                    <td><span class="shortcut">Shift + Tab</span></td>
+                </tr>
+                <tr>
+                    <td>Toggle absolute reference</td>
+                    <td><span class="shortcut">F4</span></td>
+                    <td><span class="shortcut">⌘ + T</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Other Shortcuts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>PC Shortcut</th>
+                    <th>Mac Shortcut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Insert function</td>
+                    <td><span class="shortcut">Shift + F3</span></td>
+                    <td><span class="shortcut">Shift + F3</span></td>
+                </tr>
+                <tr>
+                    <td>Function Arguments dialog</td>
+                    <td><span class="shortcut">Ctrl + A</span> (during formula editing)</td>
+                    <td><span class="shortcut">⌘ + A</span> (during formula editing)</td>
+                </tr>
+                <tr>
+                    <td>Calculate all workbooks</td>
+                    <td><span class="shortcut">F9</span></td>
+                    <td><span class="shortcut">⌘ + =</span></td>
+                </tr>
+                <tr>
+                    <td>Calculate active worksheet</td>
+                    <td><span class="shortcut">Shift + F9</span></td>
+                    <td><span class="shortcut">Shift + ⌘ + =</span></td>
+                </tr>
+                <tr>
+                    <td>Insert new worksheet</td>
+                    <td><span class="shortcut">Shift + F11</span></td>
+                    <td><span class="shortcut">Shift + F11</span> or <span class="shortcut">Shift + Fn + F11</span></td>
+                </tr>
+                <tr>
+                    <td>Create chart</td>
+                    <td><span class="shortcut">F11</span></td>
+                    <td><span class="shortcut">F11</span> or <span class="shortcut">Fn + F11</span></td>
+                </tr>
+                <tr>
+                    <td>Define name</td>
+                    <td><span class="shortcut">Ctrl + F3</span></td>
+                    <td><span class="shortcut">⌘ + F3</span></td>
+                </tr>
+                <tr>
+                    <td>Spell check</td>
+                    <td><span class="shortcut">F7</span></td>
+                    <td><span class="shortcut">F7</span> or <span class="shortcut">Fn + F7</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

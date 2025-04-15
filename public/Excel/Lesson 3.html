@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Course: Session 3 - Essential Formulas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import modern, professional fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        
+        .excel-green {
+            background-color: #217346;
+        }
+        
+        .excel-light-green {
+            background-color: #e7f4e4;
+        }
+        
+        .excel-dark-green {
+            background-color: #1a5c38;
+        }
+        
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+        
+        .bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .bullet.active {
+            background-color: #217346;
+        }
+        
+        .formula-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #217346;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .function-highlight {
+            color: #217346;
+            font-weight: 500;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .example-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Font improvements for syntax and code */
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+            font-weight: 400;
+        }
+        
+        /* Enhanced list styling */
+        ul.list-disc li, ol.list-decimal li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Button styling improvements */
+        button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        /* Improved spacing in content */
+        .p-6 {
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="excel-green text-white p-4 shadow-md">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-file-excel text-2xl"></i>
+                    <h1 class="text-xl font-bold">Excel Mastery Course</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm">Session 3: Essential Formulas</span>
+                    <button class="bg-white text-excel-green px-4 py-1 rounded-md font-medium hover:bg-gray-100 transition">
+                        <i class="fas fa-download mr-1"></i> Download
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto p-4">
+            <!-- Slide Container -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- Current Slide -->
+                <div id="slide-container" class="relative">
+                    <!-- Slides will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex justify-between items-center p-4 border-t">
+                    <button id="prev-btn" class="excel-green text-white px-4 py-2 rounded-md hover:bg-excel-dark-green transition">
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    
+                    <div id="slide-indicators" class="flex">
+                        <!-- Bullets will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <button id="next-btn" class="excel-green text-white px-4 py-2 rounded-md hover:bg-excel-dark-green transition">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="excel-dark-green text-white p-4 text-center text-sm">
+            <p>© 2025 Excel Mastery Course. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Slide data
+        const slides = [
+            {
+                title: "Session Overview",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Session Overview</h2>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Basic Excel Formulas</li>
+                            <li>Intermediate Excel Functions</li>
+                            <li>Advanced Formula Techniques</li>
+                            <li>Financial Functions</li>
+                            <li>Hands-on Practice</li>
+                        </ul>
+                        <div class="mt-6 excel-light-green p-4 rounded-md">
+                            <h3 class="font-bold text-excel-green mb-2">Key Takeaways:</h3>
+                            <p>This session will equip you with the essential formula knowledge to transform from an Excel beginner to a proficient user.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Basic Formulas: Structure",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Basic Formulas: Structure</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>All formulas begin with an equal sign (=)</li>
+                            <li>Can contain:
+                                <ul class="list-circle pl-6 mt-1">
+                                    <li>Cell references (A1, B5, etc.)</li>
+                                    <li>Operators (+, -, *, /, >, <, etc.)</li>
+                                    <li>Constants (numbers or text)</li>
+                                    <li>Functions (SUM, AVERAGE, etc.)</li>
+                                </ul>
+                            </li>
+                            <li>Excel follows order of operations (PEMDAS)</li>
+                            <li>Functions have specific syntax: =FUNCTION(arguments)</li>
+                        </ul>
+                        
+                        <div class="formula-box">
+                            <p><span class="function-highlight">=A1+B1</span> - Simple addition</p>
+                            <p><span class="function-highlight">=(A1+B1)*C1</span> - With parentheses for order of operations</p>
+                            <p><span class="function-highlight">=SUM(A1:A10)</span> - Using a function</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "SUM Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">SUM Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Adds all numbers in a range</li>
+                            <li>Syntax: <span class="font-mono">=SUM(number1, [number2], ...)</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=SUM(A1:A10)</span> - Adds values in cells A1 through A10</p>
+                            <p><span class="function-highlight">=SUM(A1:A10, C1:C10)</span> - Adds values in multiple ranges</p>
+                            <p><span class="function-highlight">=SUM(A1:A10)/20</span> - Can be part of larger formulas</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <p><i class="fas fa-lightbulb mr-2"></i> <strong>Shortcut:</strong> Alt+= (AutoSum)</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "AVERAGE Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">AVERAGE Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Calculates the arithmetic mean (average) of values</li>
+                            <li>Syntax: <span class="font-mono">=AVERAGE(number1, [number2], ...)</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=AVERAGE(B2:B8)</span> - Average of values in range B2:B8</p>
+                            <p><span class="function-highlight">=AVERAGE(B2:B8,D2:D8)</span> - Average of multiple ranges</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <h3 class="font-bold mb-2">Notes:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Ignores text values</li>
+                                <li>Counts zeros but ignores empty cells</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "COUNT and COUNTA Functions",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">COUNT and COUNTA Functions</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">COUNT:</h3>
+                            <ul class="list-disc pl-6 space-y-1 mb-2">
+                                <li>Counts cells containing numbers</li>
+                                <li>Syntax: <span class="font-mono">=COUNT(value1, [value2], ...)</span></li>
+                                <li>Example: <span class="function-highlight">=COUNT(A1:A20)</span> - Counts numeric cells in range</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">COUNTA:</h3>
+                            <ul class="list-disc pl-6 space-y-1 mb-2">
+                                <li>Counts non-empty cells</li>
+                                <li>Syntax: <span class="font-mono">=COUNTA(value1, [value2], ...)</span></li>
+                                <li>Example: <span class="function-highlight">=COUNTA(A1:A20)</span> - Counts all non-empty cells</li>
+                                <li>Includes text, logical values, errors, and numbers</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note-box">
+                            <p><i class="fas fa-exclamation-triangle mr-2"></i> <strong>Important:</strong> COUNT only counts numbers, while COUNTA counts all non-empty cells.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "MAX and MIN Functions",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">MAX and MIN Functions</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">MAX:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Returns the largest value in a range</li>
+                                    <li>Syntax: <span class="font-mono">=MAX(number1, [number2], ...)</span></li>
+                                    <li>Example: <span class="function-highlight">=MAX(C2:C50)</span> - Finds maximum value in range</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">MIN:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Returns the smallest value in a range</li>
+                                    <li>Syntax: <span class="font-mono">=MIN(number1, [number2], ...)</span></li>
+                                    <li>Example: <span class="function-highlight">=MIN(C2:C50)</span> - Finds minimum value in range</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 excel-light-green p-4 rounded-md">
+                            <h3 class="font-bold text-excel-green mb-2">Practical Use:</h3>
+                            <p>Use MAX and MIN to quickly identify outliers or extreme values in your data sets.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "IF Function Basics",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">IF Function Basics</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Performs a logical test and returns different values based on result</li>
+                            <li>Syntax: <span class="font-mono">=IF(logical_test, value_if_true, value_if_false)</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=IF(A1>10, "High", "Low")</span> - Text result based on numeric test</p>
+                            <p><span class="function-highlight">=IF(A1>10, A1*0.1, A1*0.05)</span> - Calculation based on condition</p>
+                            <p><span class="function-highlight">=IF(A1="Yes", 1, 0)</span> - Numeric result based on text test</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <p><i class="fas fa-info-circle mr-2"></i> <strong>Foundation</strong> for more complex logical operations</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "TRIM Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">TRIM Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Removes extra spaces from text</li>
+                            <li>Syntax: <span class="font-mono">=TRIM(text)</span></li>
+                            <li>Example: <span class="function-highlight">=TRIM(A1)</span> - Removes leading, trailing, and extra spaces</li>
+                        </ul>
+                        
+                        <div class="mb-4">
+                            <h3 class="font-bold mb-2">Use cases:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Cleaning imported or copy-pasted data</li>
+                                <li>Standardizing text input</li>
+                                <li>Preparing data for lookups</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note-box">
+                            <p><i class="fas fa-exclamation-triangle mr-2"></i> <strong>Limitation:</strong> Only works on a single cell reference</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "UNIQUE Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">UNIQUE Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Returns a list of unique values from a range</li>
+                            <li>Syntax: <span class="font-mono">=UNIQUE(array, [by_col], [exactly_once])</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=UNIQUE(A1:A100)</span> - List of unique values in column A</p>
+                            <p><span class="function-highlight">=UNIQUE(A1:B100,FALSE,TRUE)</span> - Unique combinations of columns A & B</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <h3 class="font-bold mb-2">Notes:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Available in Excel 365/2021 (dynamic array function)</li>
+                                <li>Returns a spilled array of results</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "RANK Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">RANK Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Returns the rank of a number within a list of numbers</li>
+                            <li>Syntax: <span class="font-mono">=RANK(number, ref, [order])</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=RANK(B2,$B$2:$B$10,0)</span> - Rank of B2 among B2:B10 (descending)</p>
+                            <p><span class="function-highlight">=RANK(B2,$B$2:$B$10,1)</span> - Rank of B2 among B2:B10 (ascending)</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <h3 class="font-bold mb-2">Notes:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Duplicate values receive same rank</li>
+                                <li>The presence of duplicates affects subsequent ranks</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "TRANSPOSE Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">TRANSPOSE Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Converts a horizontal range to vertical or vice versa</li>
+                            <li>Syntax: <span class="font-mono">=TRANSPOSE(array)</span></li>
+                            <li>Example: <span class="function-highlight">=TRANSPOSE(A1:D1)</span> - Converts row to column</li>
+                        </ul>
+                        
+                        <div class="note-box">
+                            <h3 class="font-bold mb-2">Notes:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>Classic version requires array entry (Ctrl+Shift+Enter)</li>
+                                <li>Excel 365/2021 version is a dynamic array function</li>
+                                <li>Useful for reorganizing imported data</li>
+                                <li>Can be used to pivot small datasets</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Other Useful Basic Functions",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Other Useful Basic Functions</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h3 class="font-bold mb-2">CONCATENATE/CONCAT:</h3>
+                                <p>Join text strings</p>
+                                <div class="formula-box">
+                                    <p><span class="function-highlight">=CONCATENATE(A1, " ", B1)</span></p>
+                                    <p>or</p>
+                                    <p><span class="function-highlight">=CONCAT(A1, " ", B1)</span></p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-2">LEN:</h3>
+                                <p>Count characters in a text string</p>
+                                <div class="formula-box">
+                                    <p><span class="function-highlight">=LEN(A1)</span> - Returns the number of characters</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-2">LEFT/RIGHT/MID:</h3>
+                                <p>Extract parts of text</p>
+                                <div class="formula-box">
+                                    <p><span class="function-highlight">=LEFT(A1, 3)</span> - First 3 characters from left</p>
+                                    <p><span class="function-highlight">=RIGHT(A1, 4)</span> - Last 4 characters from right</p>
+                                    <p><span class="function-highlight">=MID(A1, 2, 5)</span> - 5 characters starting at position 2</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold mb-2">ROUND/ROUNDUP/ROUNDDOWN:</h3>
+                                <p>Control number rounding</p>
+                                <div class="formula-box">
+                                    <p><span class="function-highlight">=ROUND(A1, 2)</span> - Round to 2 decimal places</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Advanced Formula: INDEX & MATCH",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Advanced Formula: INDEX & MATCH</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">INDEX:</h3>
+                            <ul class="list-disc pl-6 space-y-1 mb-2">
+                                <li>Returns a value from a table based on row/column position</li>
+                                <li>Syntax: <span class="font-mono">=INDEX(array, row_num, [column_num])</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">MATCH:</h3>
+                            <ul class="list-disc pl-6 space-y-1 mb-2">
+                                <li>Returns the position of an item in a range</li>
+                                <li>Syntax: <span class="font-mono">=MATCH(lookup_value, lookup_array, [match_type])</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Combined for powerful lookups:</h3>
+                            <p><span class="function-highlight">=INDEX(C3:E9, MATCH(B13, C3:C9, 0), MATCH(B14, C3:E3, 0))</span></p>
+                            <ul class="list-disc pl-6 mt-2">
+                                <li>Superior alternative to VLOOKUP/HLOOKUP</li>
+                                <li>Can look in any direction</li>
+                                <li>More resilient to column changes</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "IF with AND/OR Functions",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">IF with AND/OR Functions</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">AND:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Returns TRUE if all conditions are true</li>
+                                    <li>Syntax: <span class="font-mono">=AND(logical1, [logical2], ...)</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">OR:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Returns TRUE if any condition is true</li>
+                                    <li>Syntax: <span class="font-mono">=OR(logical1, [logical2], ...)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Combined with IF:</h3>
+                            <p><span class="function-highlight">=IF(AND(C2>=C4, C2<=C5), C6, C7)</span> - Check multiple conditions</p>
+                            <p><span class="function-highlight">=IF(OR(A1="Ready", A1="Complete"), "Proceed", "Wait")</span></p>
+                            <p class="mt-2">Avoids nested IF functions for better readability</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "OFFSET with SUM/AVERAGE",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">OFFSET with SUM/AVERAGE</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">OFFSET:</h3>
+                            <ul class="list-disc pl-6 space-y-1 mb-2">
+                                <li>Returns a reference offset from a starting point</li>
+                                <li>Syntax: <span class="font-mono">=OFFSET(reference, rows, cols, [height], [width])</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Combined with other functions:</h3>
+                            <p><span class="function-highlight">=SUM(OFFSET(B4, 0, 0, 10, 1))</span> - Sum 10 rows starting at B4</p>
+                            <p><span class="function-highlight">=AVERAGE(OFFSET(B4, 0, E2-1))</span> - Average based on dynamic column</p>
+                            <p class="mt-2">Creates dynamic ranges that adapt to changing data</p>
+                            <p>Used in financial models with variable time periods</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "CHOOSE Function",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">CHOOSE Function</h2>
+                        <ul class="list-disc pl-6 space-y-2 mb-4">
+                            <li>Returns a value from a list based on position</li>
+                            <li>Syntax: <span class="font-mono">=CHOOSE(index_num, value1, [value2], ...)</span></li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h3 class="font-bold mb-2">Examples:</h3>
+                            <p><span class="function-highlight">=CHOOSE(2, "Q1", "Q2", "Q3", "Q4")</span> - Returns "Q2"</p>
+                            <p><span class="function-highlight">=CHOOSE(MONTH(A1), "Jan", "Feb", "Mar", ...)</span> - Month name</p>
+                        </div>
+                        
+                        <div class="note-box mt-4">
+                            <p><i class="fas fa-lightbulb mr-2"></i> <strong>Great for scenario analysis</strong> in financial models</p>
+                            <p>Select between different assumptions/calculations</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "SUMIF and COUNTIF Functions",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">SUMIF and COUNTIF Functions</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">SUMIF:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Adds numbers that meet criteria</li>
+                                    <li>Syntax: <span class="font-mono">=SUMIF(range, criteria, [sum_range])</span></li>
+                                    <li>Example: <span class="function-highlight">=SUMIF(B2:B10, ">100", C2:C10)</span> - Sum values in C where B>100</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">COUNTIF:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Counts cells that meet criteria</li>
+                                    <li>Syntax: <span class="font-mono">=COUNTIF(range, criteria)</span></li>
+                                    <li>Example: <span class="function-highlight">=COUNTIF(A1:A10, ">=21")</span> - Count values ≥ 21</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="note-box">
+                            <p><i class="fas fa-info-circle mr-2"></i> <strong>Multiple conditions:</strong> Use SUMIFS and COUNTIFS</p>
+                            <p><span class="function-highlight">=COUNTIFS(B2:B10, ">0", C2:C10, "Approved")</span></p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Financial Functions: PMT and IPMT",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Financial Functions: PMT and IPMT</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">PMT:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Calculates payment for a loan with constant payments and interest</li>
+                                    <li>Syntax: <span class="font-mono">=PMT(rate, nper, pv, [fv], [type])</span></li>
+                                    <li>Example: <span class="function-highlight">=PMT(5%/12, 30*12, 250000)</span> - Monthly mortgage payment</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">IPMT:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Returns interest payment for a specific period</li>
+                                    <li>Syntax: <span class="font-mono">=IPMT(rate, per, nper, pv, [fv], [type])</span></li>
+                                    <li>Example: <span class="function-highlight">=IPMT(5%/12, 1, 30*12, 250000)</span> - Interest portion of first payment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="excel-light-green p-4 rounded-md">
+                            <p><i class="fas fa-home mr-2"></i> <strong>Used extensively</strong> in loan amortization schedules</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Financial Functions: NPV and IRR",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Financial Functions: NPV and IRR</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">NPV:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Calculates Net Present Value of an investment</li>
+                                    <li>Syntax: <span class="font-mono">=NPV(rate, value1, [value2], ...)</span></li>
+                                    <li>Example: <span class="function-highlight">=NPV(10%, B2:B10)</span> - NPV of cash flows at 10% discount</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">IRR:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>Calculates Internal Rate of Return</li>
+                                    <li>Syntax: <span class="font-mono">=IRR(values, [guess])</span></li>
+                                    <li>Example: <span class="function-highlight">=IRR(B1:B10)</span> - IRR for series of cash flows</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="excel-light-green p-4 rounded-md">
+                            <p><i class="fas fa-chart-line mr-2"></i> <strong>Used for investment analysis</strong> and capital budgeting</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Financial Functions: XNPV and XIRR",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Financial Functions: XNPV and XIRR</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">XNPV:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>NPV for irregular time periods</li>
+                                    <li>Syntax: <span class="font-mono">=XNPV(rate, values, dates)</span></li>
+                                    <li>Example: <span class="function-highlight">=XNPV(10%, B2:B10, A2:A10)</span> - NPV with specific dates</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-bold text-lg mb-2">XIRR:</h3>
+                                <ul class="list-disc pl-6 space-y-1 mb-2">
+                                    <li>IRR for irregular time periods</li>
+                                    <li>Syntax: <span class="font-mono">=XIRR(values, dates, [guess])</span></li>
+                                    <li>Example: <span class="function-highlight">=XIRR(B2:B10, A2:A10)</span> - IRR with specific dates</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="note-box">
+                            <h3 class="font-bold mb-2">Key Advantages:</h3>
+                            <ul class="list-disc pl-6">
+                                <li>More accurate than NPV/IRR for real-world analysis</li>
+                                <li>Critical for accurate financial modeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Formula Best Practices",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Formula Best Practices</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Use cell references instead of hard-coding values</li>
+                                <li>Give meaningful names to ranges</li>
+                                <li>Break complex formulas into smaller steps</li>
+                                <li>Document complex calculations with comments</li>
+                            </ul>
+                            
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Use absolute references ($) for constants</li>
+                                <li>Consider error handling with IFERROR</li>
+                                <li>Test formulas with simple examples first</li>
+                                <li>Validate results with alternative calculations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-6 excel-light-green p-4 rounded-md">
+                            <h3 class="font-bold text-excel-green mb-2">Pro Tip:</h3>
+                            <p>Use the F9 key to evaluate parts of your formula during editing to verify intermediate results.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Practice Exercise: Basic Formulas",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Practice Exercise: Basic Formulas</h2>
+                        <p class="mb-4">Using the provided worksheet:</p>
+                        
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li>Calculate total sales in column D using SUM</li>
+                            <li>Find average sales per product using AVERAGE</li>
+                            <li>Count the number of products with COUNT or COUNTA</li>
+                            <li>Identify highest and lowest sales with MAX and MIN</li>
+                            <li>Create conditional formatting for values above average</li>
+                            <li>Use IF to categorize sales as "High" (>1000) or "Low"</li>
+                        </ol>
+                        
+                        <div class="mt-6 note-box">
+                            <h3 class="font-bold mb-2">Exercise File:</h3>
+                            <button class="excel-green text-white px-4 py-2 rounded-md hover:bg-excel-dark-green transition">
+                                <i class="fas fa-download mr-2"></i> Download Practice Worksheet
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Practice Exercise: Advanced Formulas",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Practice Exercise: Advanced Formulas</h2>
+                        <p class="mb-4">Using the provided worksheet:</p>
+                        
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li>Create a SUMIF formula to total sales by region</li>
+                            <li>Use INDEX & MATCH to look up product prices</li>
+                            <li>Implement a conditional sum with IF and AND</li>
+                            <li>Build a dynamic range with OFFSET and SUM</li>
+                            <li>Calculate loan payments with PMT</li>
+                            <li>Evaluate investment returns with NPV and IRR</li>
+                        </ol>
+                        
+                        <div class="mt-6 note-box">
+                            <h3 class="font-bold mb-2">Challenge:</h3>
+                            <p>Try to complete all tasks using only formulas (no pivot tables or other features).</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Questions?",
+                content: `
+                    <div class="p-6 text-center">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Questions?</h2>
+                        
+                        <div class="max-w-md mx-auto">
+                            <div class="mb-6">
+                                <i class="fas fa-question-circle text-5xl text-excel-green mb-4"></i>
+                                <p class="text-lg">Do you have any questions about today's session?</p>
+                            </div>
+                            
+                            <div class="bg-gray-100 p-6 rounded-lg">
+                                <h3 class="font-bold mb-4">Submit your questions:</h3>
+                                <textarea class="w-full p-3 border rounded-md mb-3" rows="3" placeholder="Type your question here..."></textarea>
+                                <button class="excel-green text-white px-6 py-2 rounded-md hover:bg-excel-dark-green transition">
+                                    Submit Question
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Coming Up Next Session",
+                content: `
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-excel-green mb-4">Coming Up Next Session</h2>
+                        <h3 class="text-xl font-semibold mb-4">Session 3: Data Transformation & Cleaning</h3>
+                        
+                        <ul class="list-disc pl-6 space-y-2 mb-6">
+                            <li>Text functions for data manipulation</li>
+                            <li>Handling dates and times</li>
+                            <li>Data validation techniques</li>
+                            <li>Find & Replace advanced techniques</li>
+                            <li>Text to Columns feature</li>
+                            <li>Removing duplicates and errors</li>
+                        </ul>
+                        
+                        <div class="excel-light-green p-4 rounded-md">
+                            <h3 class="font-bold text-excel-green mb-2">Preparation:</h3>
+                            <p>Bring a dataset you'd like to clean (or use our sample data) to practice these techniques hands-on.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: "Thank You!",
+                content: `
+                    <div class="p-6 text-center">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="excel-green text-white p-8 rounded-lg mb-6">
+                                <i class="fas fa-check-circle text-5xl mb-4"></i>
+                                <h2 class="text-3xl font-bold mb-2">Thank You!</h2>
+                                <p class="text-xl">See you in the next session</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="border p-4 rounded-lg">
+                                    <i class="fas fa-book text-excel-green text-2xl mb-2"></i>
+                                    <h3 class="font-bold">Resources</h3>
+                                    <p class="text-sm mt-1">Download session materials</p>
+                                </div>
+                                
+                                <div class="border p-4 rounded-lg">
+                                    <i class="fas fa-tasks text-excel-green text-2xl mb-2"></i>
+                                    <h3 class="font-bold">Exercises</h3>
+                                    <p class="text-sm mt-1">Practice what you learned</p>
+                                </div>
+                                
+                                <div class="border p-4 rounded-lg">
+                                    <i class="fas fa-certificate text-excel-green text-2xl mb-2"></i>
+                                    <h3 class="font-bold">Certificate</h3>
+                                    <p class="text-sm mt-1">Track your progress</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Initialize slides
+        const slideContainer = document.getElementById('slide-container');
+        const slideIndicators = document.getElementById('slide-indicators');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        let currentSlide = 0;
+        
+        // Create slides and indicators
+        slides.forEach((slide, index) => {
+            // Create slide
+            const slideElement = document.createElement('div');
+            slideElement.className = `slide ${index === 0 ? 'active' : ''}`;
+            slideElement.innerHTML = `
+                <div class="border-b p-4 excel-green text-white">
+                    <h2 class="text-xl font-bold">${slide.title}</h2>
+                </div>
+                ${slide.content}
+            `;
+            slideContainer.appendChild(slideElement);
+            
+            // Create indicator
+            const indicator = document.createElement('span');
+            indicator.className = `bullet ${index === 0 ? 'active' : ''}`;
+            indicator.dataset.index = index;
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            slideIndicators.appendChild(indicator);
+        });
+        
+        // Navigation functions
+        function goToSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.bullet').forEach(bullet => {
+                bullet.classList.remove('active');
+            });
+            
+            currentSlide = index;
+            document.querySelectorAll('.slide')[currentSlide].classList.add('active');
+            document.querySelectorAll('.bullet')[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>
