@@ -342,7 +342,7 @@ const slides = [
             </tr>
             <tr>
               <td>Find largest</td>
-              <td><span className="font-mono">=(A1>A2)*(A1>A3)*A1 + (A2>A1)*(A2>A3)*A2 + (A3>A1)*(A3>A2)*A3</span></td>
+              <td><span className="font-mono">=(A1{'>'}A2)*(A1{'>'}A3)*A1 + (A2{'>'}A1)*(A2{'>'}A3)*A2 + (A3{'>'}A1)*(A3{'>'}A2)*A3</span></td>
               <td><span className="font-mono">=MAX(A1:A3)</span></td>
             </tr>
           </tbody>
