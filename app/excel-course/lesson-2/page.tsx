@@ -25,7 +25,7 @@ export default function ExcelCourse() {
       goToSlide(currentSlide - 1)
     }
   }
-  
+   
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
