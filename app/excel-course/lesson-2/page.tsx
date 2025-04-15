@@ -567,8 +567,8 @@ const slides = [
         
         <div className="example-box">
           <h3 className="font-bold mb-2">Examples:</h3>
-          <p><span className="function-highlight">=IF(A1>10, "High", "Low")</span> - Text result based on numeric test</p>
-          <p><span className="function-highlight">=IF(A1>10, A1*0.1, A1*0.05)</span> - Calculation based on condition</p>
+          <p><span className="function-highlight">=IF(A1{'>'}10, "High", "Low")</span> - Text result based on numeric test</p>
+          <p><span className="function-highlight">=IF(A1{'>'}10, A1*0.1, A1*0.05)</span> - Calculation based on condition</p>
           <p><span className="function-highlight">=IF(A1="Yes", 1, 0)</span> - Convert text response to numeric</p>
         </div>
         
@@ -789,7 +789,7 @@ const slides = [
               <p className="font-semibold">Question 5:</p>
               <p>Write a formula to display "High Value" if an order total exceeds 500, otherwise "Standard Value".</p>
               <div className="mt-2 formula-box">
-                <span className="function-highlight">=IF(G2>500,"High Value","Standard Value")</span>
+                <span className="function-highlight">=IF(G2{'>'}500,"High Value","Standard Value")</span>
               </div>
             </div>
             
@@ -837,7 +837,7 @@ const slides = [
               <p className="font-semibold">Question 10:</p>
               <p>Write a formula to check if a Unit Cost value is above average and display "Above Average" or "Below Average".</p>
               <div className="mt-2 formula-box">
-                <span className="function-highlight">=IF(F2>AVERAGE($F$2:$F$6),"Above Average","Below Average")</span>
+                <span className="function-highlight">=IF(F2{'>'}AVERAGE($F$2:$F$6),"Above Average","Below Average")</span>
               </div>
             </div>
             
